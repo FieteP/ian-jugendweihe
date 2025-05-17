@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Jugendweihe Geschenk</title>
+    <meta name="author" content="Fiete Peckermann">
+    <link rel="icon" href="https://img.icons8.com/emoji/48/000000/wrapped-gift.png">
+    <style>
+        /* Vorhandene Stile hier */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            position: relative;
+            padding: 20px;
+            max-width: 600px;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+        }
+        h1 {
+            color: #1e3a8a;
+        }
+        p {
+            color: #333;
+            font-weight: bold;
+            font-size: large;
+            margin-bottom: 0px;
+        }
+        .progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            flex-direction: column;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background: #1e3a8a;
+            transition: width 0.3s ease;
+        }
+        .gift-icon {
+            width: 40px;
+            height: 40px;
+            background: url('https://img.icons8.com/emoji/48/000000/wrapped-gift.png') no-repeat center center;
+            background-size: cover;
+        }
+        input {
+            margin: 10px auto;
+            padding: 15px;
+            width: calc(100% - 40px);
+            border: 1px solid #a5a4a4;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+        }
+        input::placeholder {
+            text-align: center;
+        }
+        button {
+            margin-top: 10px;
+            margin-bottom: -10px;
+            padding: 15px 20px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        button:hover {
+            background: #122b6b;
+        }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .win-screen {
+            display: none;
+            text-align: center;
+            color: #1e3a8a;
+        }
+        .final-question {
+            display: none;
+            text-align: center;
+        }
+        .instructions-btn-img {
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1001;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .modal-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 150px auto;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+        .modal-content p {
+            font-weight: lighter;
+        }
+        .modal-content h1 {
+            font-weight: bold;
+            margin-bottom: -15px;
+            font-size: xx-large;
+        }
+        .modal-content h2 {
+            font-weight: bolder;
+            font-size: x-large;
+            margin-top: 30px;
+            margin-bottom: -10px;
+        }
+        .modal-content h3 {
+            font-weight: bold;
+            font-size: larger;
+            margin-bottom: -10px;
+            margin-top: 30px;
+        }
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .close-btn:hover {
+            background: #122b6b;
+        }
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 36px;
+            }
+            input {
+                font-size: 20px;
+                padding: 20px;
+            }
+            button {
+                font-size: 20px;
+                padding: 20px 25px;
+            }
+            .message {
+                font-size: 18px;
+            }
+            .progress-bar {
+                height: 25px;
+            }
+            .gift-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                width: 100%;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            input {
+                padding: 10px;
+                font-size: 16px;
+            }
+            button {
+                padding: 10px;
+                font-size: 16px;
+            }
+            .progress {
+                margin: 15px 0;
+            }
+            .progress-bar {
+                height: 15px;
+            }
+            .modal-content {
+                transform: scale(0.85);
+            }
+            .instructions-btn-img {
+                transform: scale(0.85);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="instructions-btn-img" src="instructions-btn-image.png" alt="Icon zur Darstellung des Spielregeln- Buttons" onclick="openInstructions()">
+    <div class="container">
+        <h1>Für dein Geschenk zur Jugendweihe</h1>
+        <div class="progress">
+            <div class="progress-bar">
+                <div class="progress-bar-inner" style="width: 0%;"></div>
+            </div>
+            <div class="gift-icon"></div>
+        </div>
+        <div class="quiz-section">
+            <p>Gib hier den Code für die nächste Stufe ein:</p>
+            <input type="text" id="codeInput" placeholder="Code eingeben">
+            <button onclick="checkCode()">Überprüfe den Code</button>
+            <div class="message" id="message"></div>
+        </div>
+        <div class="final-question" id="finalQuestion">
+            <h2>Ich muss zugeben, ich hab dich ein wenig veräppelt!</h2>
+            <p>Du musst noch eine LETZTE Aufgabe lösen, bevor das hier endgültig vorbei ist:</p>
+            <p>Wie ist der Name meines Katers?</p>
+            <input type="text" id="finalInput" placeholder="Gib hier den Namen ein!">
+            <button onclick="checkFinalQuestion()">Antwort überprüfen</button>
+            <div class="message" id="finalMessage"></div>
+        </div>
+        <div class="win-screen" id="winScreen">
+            <h2>Herzlichen Glückwunsch, Ian!</h2>
+            <p style="color:green">Du hast es geschafft!</p>
+            <p style="font-size:18px; font-weight:lighter; margin-top:0px;">(Wurde ja langsam auch Zeit ;D)</p>
+            <p>Deshalb ist hier nun der Code, den du für das Schloss an der Kiste verwenden kannst:</p>
+            <p style="font-size: 24px; font-weight: bold; color:#1e3a8a; margin-top:10px;">539</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <h1>Spielanleitung</h1>
+            <h2>Einleitung:</h2>
+            <p>Herzlichen Glückwunsch zu deiner Jugendweihe! Dieses Spiel habe ich extra für dich erstellt, um dir auf spielerische Weise den Weg zu deinem Geschenk zu ebnen. Es erwarten dich mehrere spannende Herausforderungen, bei denen du Köpfchen, Kreativität und Geduld beweisen musst. Los geht's!</p>
+            <h2>Spielprinzip:</h2>
+            <h3>1. Umschläge öffnen:</h3>
+            <p>Du erhältst von mir drei Umschläge. In jedem dieser Umschläge findest du eine oder mehrere Aufgaben, die du lösen musst. Jeder Umschlag bringt dich zu einem der drei Codes, die für diese Website benötigt werden.</p>
+            <h3>2. Codes eingeben:</h3>
+            <p>Sobald du einen Code herausgefunden hast, gibst du ihn ganz einfach auf dieser Website hier ein. Aber Achtung: Die Reihenfolge der Codes ist wichtig! Du gelangst nur zur nächsten Stufe, wenn alle drei Codes korrekt eingegeben wurden, also achte auch auf Rechtschreibfehler und Satzzeichen!</p>
+            <h3>3. Finale Aufgabe:</h3>
+            <p>Nachdem du alle Aufgaben gelöst und alle Codes eingegeben hast, wartet eine letzte Aufgabe auf dich. Löse diese, um an den finalen Code zu kommen, den du für das Schloss an der Kiste benötigst.</p>
+            <h3>4. Das Geschenk:</h3>
+            <p>Mit dem finalen Code kannst du das Schloss an der Kiste öffnen – in dieser wartet dann auch schon dein Jugendweihe-Geschenk auf dich!</p>
+            <button class="close-btn" onclick="closeInstructions()">Schließen</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+
+        function openInstructions() {
+            document.getElementById('instructionsModal').style.display = 'flex';
+            const modalContent = modal.querySelector(".modal-content");
+            modalContent.scrollTop = 0;
+        }
+
+        function closeInstructions() {
+            document.getElementById('instructionsModal').style.display = 'none';
+        }
+
+        const codes = ["49245", "BESTFRIENDS", "Du hast es geschafft!"];
+        const finalAnswer = "Murphy";
+        let currentStage = 0;
+
+        document.getElementById("codeInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkCode();
+            }
+        });
+
+        document.getElementById("finalInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkFinalQuestion();
+            }
+        });
+
+        function checkCode() {
+            const input = document.getElementById("codeInput").value;
+            const message = document.getElementById("message");
+            const progressBarInner = document.querySelector(".progress-bar-inner");
+
+            if (input.trim().toLowerCase() === codes[currentStage].trim().toLowerCase()) {
+                message.textContent = "Super, du hast den richtigen Code gefunden!";
+                message.style.color = "green";
+                currentStage++;
+
+                const progress = (currentStage / codes.length) * 100;
+                progressBarInner.style.width = progress + "%";
+
+                if (currentStage === codes.length) {
+                    document.querySelector(".quiz-section").style.display = "none";
+                    document.getElementById("finalQuestion").style.display = "block";
+                }
+
+                document.getElementById("codeInput").value = "";
+            } else {
+                message.textContent = "Das war leider nicht der richtige Code!";
+                message.style.color = "red";
+                document.getElementById("codeInput").value = "";
+            }
+            // Hide the message after 10 seconds
+            setTimeout(() => {
+                message.textContent = "";
+            }, 7000);
+        }
+        function checkFinalQuestion() {
+            const input = document.getElementById("finalInput").value;
+            const finalMessage = document.getElementById("finalMessage");
+
+            if (input.trim().toLowerCase() === finalAnswer.trim().toLowerCase()) {
+                document.getElementById("finalQuestion").style.display = "none";
+                document.getElementById("winScreen").style.display = "block";
+            } else {
+                finalMessage.textContent = "Das war leider nicht der richtige Code!";
+                finalMessage.style.color = "red";
+                document.getElementById("finalInput").value = "";
+            }
+            // Hide the message after 10 seconds
+            setTimeout(() => {
+                finalMessage.textContent = "";
+            }, 7000);
+        }
+    </script>
+</body>
+</html>
